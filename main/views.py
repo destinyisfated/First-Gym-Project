@@ -41,7 +41,7 @@ def register(response):
 def services(request):
     services= models.Service.objects.all().order_by('-id')
     context= {"services":services}
-    return render(request, 'services.html', context)
+    return render(request, 'index.html', context)
     
 
 def sessions(request):
