@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}
+  Gallery
+{% endblock title %}
+{% block body %}
+
+  <div class="container mt-2">
+
+    <center><h1>{{gallery.title}}</h1></center>
+    <div class="row">
+      {% for y in galdetail %}
+      <div class="col-md-4">
+      
+        <div class="card">
+          <img src="{{y.img.url}}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{y.alt_text}}</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-body-secondary">Last updated {{y.time_tag}}</small></p>
+          </div>
+        </div>
+    
+    </div>
+    {% endfor %}
+    </div>
+    <br><br>
+
+    
+  
+  
+ 
+{% endblock body %}

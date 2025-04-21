@@ -1,0 +1,70 @@
+<header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-lg-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <img src="static/assets/img/logo.png" alt=""> 
+        <h1 class="sitename">WALKERS FITNESS</h1>
+        <span>.</span>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="/" class="active">home<br></a></li>
+          <li><a href="/" class="active">Profile<br></a></li>
+          <li><a href="/about">Gallery</a></li>
+          <li><a href="">Attendance</a></li>
+          <li><a href="">Classes</a></li>
+          <li><a href="/contact">Contact</a></li>
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'logout' %}">Log out</a></li>
+            
+          {% else %}
+          <li><a href="{% url 'login' %}">Log in</a></li>
+          {% endif %}
+         
+     
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted" href="index.html#about">Gym Awards</a>
+
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="text-center">Welcome {{user.username}}</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h3 class="text-center">Your profile</h3>
+        </div>
+    <center><h5>Attendance record</h5></center>
+        <table class="table ">
+          <thead>
+            <tr class="table-dark">
+              <th>Date</th>
+              <th>login time</th>
+              <th>logout time</th>
+              <th>Workout</th>
+              <th>Trained by</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for x in attendance  %}
+
+            <tr>
+              <td>{{x.selectdate}}</td>
+              <td>{{x.login}}</td>
+              <td>{{x.logout}}</td>
+              <td>{{x.selectworkout}}</td>
+              <td>{{x.trainedby}}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+  </main>
